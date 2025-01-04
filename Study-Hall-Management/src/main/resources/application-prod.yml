@@ -1,0 +1,23 @@
+spring:
+  data:
+    mongodb:
+      uri:  mongodb://localhost:27017/study-hall2  # Production MongoDB instance
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "health,info"  # Expose only essential endpoints in prod
+
+  security:
+    user:
+      name: produser
+      password: prodpassword  # Change credentials for production
+
+  logging:
+    level:
+      org.springframework: WARN  # Adjust logging level for production
+
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration  # If you don't want Mongo auto config in prod

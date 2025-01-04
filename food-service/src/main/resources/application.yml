@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: seat
+  server:
+    port: 8082
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  cloud:
+    config:
+      enabled: false
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/seat
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+  management:
+    server:
+      base-path: /actuator
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+          exclude: "env,beans"
+    endpoint:
+      health:
+        show-details: always
+

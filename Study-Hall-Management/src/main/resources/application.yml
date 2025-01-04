@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: student-hall
+  server:
+    port: 8080
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  cloud:
+    config:
+      enabled: false
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/study-hall
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+  management:
+    server:
+      base-path: /actuator
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+          exclude: "env,beans"
+    endpoint:
+      health:
+        show-details: always
+
+  security:
+    user:
+      name: admin
+      password: admin123
+
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+#      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration

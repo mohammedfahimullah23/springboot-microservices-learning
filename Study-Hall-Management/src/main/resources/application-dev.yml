@@ -1,0 +1,21 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/study-hall  # Development MongoDB instance
+
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "health,info,metrics"  # Example of limiting exposure to a few endpoints in dev
+
+  security:
+    user:
+      name: devuser
+      password: devpassword
