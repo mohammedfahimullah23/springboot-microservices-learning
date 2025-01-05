@@ -1,8 +1,6 @@
 spring:
   application:
     name: student-hall
-  server:
-    port: 8080
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
   cloud:
@@ -31,6 +29,8 @@ spring:
     user:
       name: admin
       password: admin123
+server:
+  port: 8081
 
 #  autoconfigure:
 #    exclude:

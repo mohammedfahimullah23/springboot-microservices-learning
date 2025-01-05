@@ -1,0 +1,25 @@
+server:
+  port: 8073
+spring:
+  application:
+    name: gateway-service  # The name of the service that will register in Eureka
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/  # Eureka server URL
+  cloud:
+    gateway:
+      routes:
+        - id: student-hall
+          uri: lb://student-hall   # Using load balancing via Eureka
+          predicates:
+            - Path=/student/**        # All requests starting with /student-hall/ will be routed to the student-service
+
+        - id: seat
+          uri: lb://seat     # Using load balancing via Eureka
+          predicates:
+            - Path=/seat/**           # All requests starting with /seat/ will be routed to the food-service
+
+    discovery:
+      locator:
+        enabled: true
